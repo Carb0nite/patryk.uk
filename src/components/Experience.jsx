@@ -7,7 +7,7 @@ import { fetchMultipleStocks } from '../services/stockService'
 
 
 // Simple SVG sparkline component for stock visualization
-const StockSparkline = ({ data, color = '#00C853' }) => {
+const StockSparkline = ({ data }) => {
     const width = 120
     const height = 40
     const padding = 4
@@ -49,7 +49,6 @@ const StockSparkline = ({ data, color = '#00C853' }) => {
 const Experience = () => {
     const sectionRef = useRef(null)
     const [stockData, setStockData] = useState({})
-    const [isLoadingStocks, setIsLoadingStocks] = useState(true)
 
     // Fetch live stock data on mount
     useEffect(() => {
@@ -58,11 +57,9 @@ const Experience = () => {
         fetchMultipleStocks(tickers)
             .then(data => {
                 setStockData(data)
-                setIsLoadingStocks(false)
             })
             .catch(error => {
                 console.error('Error loading stock data:', error)
-                setIsLoadingStocks(false)
             })
     }, [])
 

@@ -23,15 +23,6 @@ const Contact = () => {
         return () => observer.disconnect()
     }, [])
 
-    const contacts = [
-        {
-            icon: Linkedin,
-            label: 'LinkedIn',
-            href: 'https://www.linkedin.com/in/patryk-sobczak',
-            external: true
-        }
-    ]
-
     return (
         <section className="section section-dark" id="contact" ref={sectionRef}>
             <div className="section-container">

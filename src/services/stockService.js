@@ -63,7 +63,7 @@ export async function fetchStockData(ticker) {
         const prices = Object.entries(timeSeries)
             .slice(0, 52)
             .reverse() // Chronological order (oldest to newest)
-            .map(([date, values]) => parseFloat(values['4. close']))
+            .map((entry) => parseFloat(entry[1]['4. close']))
             .filter(price => !isNaN(price) && price > 0);
 
         if (prices.length === 0) {
