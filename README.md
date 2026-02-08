@@ -1,16 +1,87 @@
-# React + Vite
+# patryk.uk v2.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built with React, Vite, and Three.js. Hosted on Firebase.
 
-Currently, two official plugins are available:
+## 🚀 Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+# Install dependencies
+npm install
 
-## React Compiler
+# Start development server
+npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Build for production
+npm run build
+```
 
-## Expanding the ESLint configuration
+## 🔧 Environment Variables
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Copy `.env.example` to `.env` and add your API keys:
+
+```bash
+cp .env.example .env
+```
+
+Required variables:
+- `VITE_ALPHA_VANTAGE_API_KEY` - Stock data API key from [Alpha Vantage](https://www.alphavantage.co/support/#api-key)
+
+## 🔥 Firebase Setup
+
+### Prerequisites
+1. Create a project at [Firebase Console](https://console.firebase.google.com)
+2. Install Firebase CLI: `npm install -g firebase-tools`
+3. Login: `firebase login`
+
+### Configure Project
+Update `.firebaserc` with your project ID:
+```json
+{
+  "projects": {
+    "default": "your-firebase-project-id"
+  }
+}
+```
+
+### Manual Deploy
+```bash
+npm run deploy
+```
+
+## 🔄 GitHub Actions CI/CD
+
+The repository includes automated deployment via GitHub Actions. On every push to `main`:
+1. Installs dependencies and lints
+2. Builds with environment variables from secrets
+3. Deploys to Firebase Hosting
+
+### Required GitHub Secrets
+
+Go to **Settings → Secrets and variables → Actions** and add:
+
+| Secret | Description |
+|--------|-------------|
+| `VITE_ALPHA_VANTAGE_API_KEY` | Alpha Vantage API key |
+| `FIREBASE_PROJECT_ID` | Your Firebase project ID |
+| `FIREBASE_SERVICE_ACCOUNT` | Firebase service account JSON (see below) |
+
+### Getting Firebase Service Account
+1. Firebase Console → Project Settings → Service Accounts
+2. Click "Generate new private key"
+3. Copy entire JSON as the secret value
+
+## 📁 Project Structure
+
+```
+├── src/
+│   ├── components/     # React components
+│   ├── styles/         # CSS styles
+│   └── utils/          # Utilities and helpers
+├── public/             # Static assets
+├── .github/workflows/  # CI/CD pipeline
+└── firebase.json       # Firebase config
+```
+
+## 📄 License
+
+MIT
