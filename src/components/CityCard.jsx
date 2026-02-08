@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 
 const CityCard = ({ city, position }) => {
     const [imageError, setImageError] = useState(false)
-    const [cardPosition, setCardPosition] = useState({ left: 0, top: 0 })
 
-    useEffect(() => {
-        if (!city) return
+    const cardPosition = useMemo(() => {
+        if (!city) return { left: 0, top: 0 }
 
         const cardWidth = 480
         const cardHeight = 280
@@ -34,7 +33,7 @@ const CityCard = ({ city, position }) => {
             top = window.innerHeight - cardHeight - padding
         }
 
-        setCardPosition({ left, top })
+        return { left, top }
     }, [city, position])
 
     if (!city) return null

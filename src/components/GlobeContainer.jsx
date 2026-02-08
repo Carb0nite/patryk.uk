@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useMemo } from 'react'
 import React from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 import CityCard from './CityCard'
@@ -331,7 +331,7 @@ const CityDot = React.memo(function CityDot({ city, cityKey, onHover, onLeave, g
 })
 
 // Globe component (Memoized)
-const Globe = React.memo(function Globe({ onCityHover, onCityLeave, scrollOpacity, ...props }) {
+const Globe = React.memo(function Globe({ onCityHover, onCityLeave, scrollOpacity }) {
     const globeRef = useRef()
 
     useFrame(() => {
