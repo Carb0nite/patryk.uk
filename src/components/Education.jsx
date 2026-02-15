@@ -1,10 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MapPin } from 'lucide-react'
 import { UCLLogo } from './CompanyLogos'
 
 
 const Education = () => {
     const sectionRef = useRef(null)
+    const [activeMap, setActiveMap] = useState(null)
+
+    const handleCardClick = (eduId) => {
+        setActiveMap(prev => prev === eduId ? null : eduId)
+    }
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -55,7 +60,12 @@ const Education = () => {
                 <h2 className="section-title">Education</h2>
 
                 {education.map(edu => (
-                    <div className="education-card" id={edu.id === 'ucl-msc' ? 'ucl' : undefined} key={edu.id}>
+                    <div
+                        className={`education-card${activeMap === edu.id ? ' map-active' : ''}`}
+                        id={edu.id === 'ucl-msc' ? 'ucl' : undefined}
+                        key={edu.id}
+                        onClick={() => handleCardClick(edu.id)}
+                    >
                         <div className="education-header">
                             <div className="education-logo">
                                 <UCLLogo className="university-logo-svg" />
@@ -80,7 +90,7 @@ const Education = () => {
                             )}
                         </div>
 
-                        {/* Hover map */}
+                        {/* Hover map (desktop) / Tap map (mobile) */}
                         <div className="education-map">
                             <iframe
                                 src={edu.mapUrl}

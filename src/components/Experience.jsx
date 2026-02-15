@@ -193,6 +193,12 @@ const Experience = () => {
                                     <span className="timeline-period">{exp.period}</span>
                                 </div>
 
+                                {/* Mobile date (shown above card on small screens) */}
+                                <div className="timeline-date-mobile">
+                                    <span className="timeline-year">{exp.startYear}</span>
+                                    <span className="timeline-period">{exp.period}</span>
+                                </div>
+
                                 {/* Experience card */}
                                 <div className="experience-card">
                                     <div className="experience-header">

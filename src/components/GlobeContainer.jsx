@@ -3,6 +3,7 @@ import React from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
+import { Earth } from 'lucide-react'
 import CityCard from './CityCard'
 
 // City data with coordinates and information
@@ -331,12 +332,19 @@ const CityDot = React.memo(function CityDot({ city, cityKey, onHover, onLeave, g
 })
 
 // Globe component (Memoized)
-const Globe = React.memo(function Globe({ onCityHover, onCityLeave, scrollOpacity }) {
+const Globe = React.memo(function Globe({ onCityHover, onCityLeave, scrollOpacity, isMobile, rotationYRef }) {
     const globeRef = useRef()
 
     useFrame(() => {
         if (globeRef.current) {
-            globeRef.current.rotation.y += 0.0005
+            if (isMobile) {
+                // On mobile, auto-spin + slider offset
+                globeRef.current.rotation.y += 0.0005
+                globeRef.current.rotation.y += rotationYRef.current
+                rotationYRef.current *= 0.95 // Dampen slider impulse
+            } else {
+                globeRef.current.rotation.y += 0.0005
+            }
         }
     })
 
@@ -453,7 +461,7 @@ const Globe = React.memo(function Globe({ onCityHover, onCityLeave, scrollOpacit
 })
 
 // Scene component with lighting
-function Scene({ onCityHover, onCityLeave, scrollOpacity }) {
+function Scene({ onCityHover, onCityLeave, scrollOpacity, isMobile, rotationYRef }) {
     return (
         <>
             <ambientLight intensity={0.6 * scrollOpacity} />
@@ -463,15 +471,19 @@ function Scene({ onCityHover, onCityLeave, scrollOpacity }) {
                 onCityHover={onCityHover}
                 onCityLeave={onCityLeave}
                 scrollOpacity={scrollOpacity}
+                isMobile={isMobile}
+                rotationYRef={rotationYRef}
                 position={[1.5, 0, 0]} // Globe positioned to the right
             />
-            <OrbitControls
-                enableZoom={false}
-                enablePan={false}
-                rotateSpeed={0.5}
-                minPolarAngle={Math.PI / 3}
-                maxPolarAngle={Math.PI * 2 / 3}
-            />
+            {!isMobile && (
+                <OrbitControls
+                    enableZoom={false}
+                    enablePan={false}
+                    rotateSpeed={0.5}
+                    minPolarAngle={Math.PI / 3}
+                    maxPolarAngle={Math.PI * 2 / 3}
+                />
+            )}
         </>
     )
 }
@@ -481,6 +493,25 @@ const GlobeContainer = () => {
     const [hoveredCity, setHoveredCity] = useState(null)
     const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 })
     const [scrollOpacity, setScrollOpacity] = useState(1)
+    const [isMobile, setIsMobile] = useState(false)
+    const [sliderValue, setSliderValue] = useState(50)
+    const rotationYRef = useRef(0)
+
+    // Detect mobile
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 1024)
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
+
+    // Update rotation ref when slider changes
+    const handleSliderChange = (e) => {
+        const val = Number(e.target.value)
+        setSliderValue(val)
+        // Apply a small rotation impulse based on slider movement
+        rotationYRef.current = (val - 50) * 0.002
+    }
 
     const handleCityHover = (cityKey, city, event) => {
         setHoveredCity({ key: cityKey, ...city })
@@ -524,8 +555,26 @@ const GlobeContainer = () => {
                     onCityHover={handleCityHover}
                     onCityLeave={handleCityLeave}
                     scrollOpacity={scrollOpacity}
+                    isMobile={isMobile}
+                    rotationYRef={rotationYRef}
                 />
             </Canvas>
+
+            {/* Mobile rotation slider */}
+            {isMobile && (
+                <div className="globe-slider-container">
+                    <Earth size={14} className="globe-slider-icon" />
+                    <span className="globe-slider-label">Rotate</span>
+                    <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={sliderValue}
+                        onChange={handleSliderChange}
+                        className="globe-rotation-slider"
+                    />
+                </div>
+            )}
 
             {/* Render city card if a city is hovered AND globe is visible */}
             {hoveredCity && scrollOpacity > 0.1 && (
