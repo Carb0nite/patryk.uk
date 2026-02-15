@@ -121,9 +121,12 @@ const Experience = () => {
             },
             description: 'Delivered enterprise integration solutions for global clients, progressing from Associate to Technical Consultant while building expertise in API-led connectivity.',
             highlights: [
-                'Delivered 8 use cases, 15 RESTful APIs processing 100K transactions in first week',
+                'Delivered multiple use cases, 10+ RESTful APIs processing 100K transactions',
                 "Finalist in internal GenAI hackathon building with Google's Gemini (Vertex AI)",
-                'Configured CI/CD pipelines on Azure DevOps for 3 environments'
+                'Managed stakeholder relationships as lead implementation consultant, overseeing a development team of 6.',
+                'Developed integration solutions with enterprise systems, including Salesforce, SAP, Dynamics 365, Business Central.',
+                'Configured CI/CD pipelines on Azure DevOps for 3 environments',
+                'Supported an internal initiative for modular and reusable assets to decrease initial consultant development efforts. Presented the initiative to 50 colleagues across EMEA.'
             ]
         },
         {
@@ -141,7 +144,11 @@ const Experience = () => {
                 ticker: 'CSCO'
             },
             description: 'Delivered a mobile device management solution for 50,000+ employees as part of the Digital Workplace Transformation team.',
-            highlights: []
+            highlights: [
+                'Analysed data in Microsoft Power BI to monitor platform migration status and enable improved strategic decisions',
+                'Built data visualisation dashboards for the Mobility operations team, now used in daily oversight of entire operational activities',
+                'Developed an interactive chatbot used throughout Cisco’s laptop procurement process to automate asset ordering'
+            ]
         },
         {
             id: 'ibm',
@@ -151,7 +158,7 @@ const Experience = () => {
             startYear: 2018,
             logo: ibmLogo,
             companyInfo: {
-                industry: 'Enterprise Tech & Consulting',
+                industry: 'Enterprise Tech',
                 revenue: '$61B',
                 hq: 'Armonk, NY, USA',
                 employees: '350K',

@@ -37,13 +37,13 @@ const About = () => {
                         Born in Poland, raised across Europe and the Middle East, I've learned that the best solutions
                         come from understanding diverse perspectives. My journey through{' '}
                         <strong>Poland → Austria → Switzerland → United Arab Emirates → Czech Republic → United Kingdom</strong>{' '}
-                        has shaped how I approach even the most ambiguous problems—with curiosity, adaptability, and a global mindset.
+                        has shaped how I approach even the most ambiguous problems. That is, with curiosity, adaptability, and a global mindset.
                     </p>
                     <p className="about-text">
-                        Today, I'm a Solution Engineer at Cover Genius, helping enterprise partners
+                        Today, I'm a Client Solution Engineer at Cover Genius, helping enterprise partners
                         integrate embedded insurance solutions across EMEA. I thrive at the intersection
                         of technology and business, translating complex technical requirements into
-                        actionable solutions.
+                        actionable solutions that scale across borders.
                     </p>
                     <div className="about-languages">
                         {languages.map(lang => (

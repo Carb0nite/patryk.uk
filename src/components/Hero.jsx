@@ -9,7 +9,8 @@ const Hero = () => {
                 <p className="hero-description">
                     Building technical solutions across borders.{' '}
                     <span className="highlight">6 countries</span>,{' '}
-                    <span className="highlight">4 languages</span>,{' '}
+                    <span className="highlight">3 languages</span>,{' '}
+                    <span className="highlight">20+ clients and integrations</span>,{' '}
                     <span className="highlight">1 passion</span>.
                 </p>
             </div>
