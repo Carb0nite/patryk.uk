@@ -115,7 +115,10 @@ const demoData = {
     grossIncome: 45000,
     bonus: 0,
     studentLoanActive: false,
-    parentalLoan: 0,
+    propertyLoanPayment: 12000,
+    propertyLoanValue: 500000,
+    propertyLoanRate: 1.1,
+    pensionReliefAtSource: true,
     serviceCharge: 2000,
     bills: 3000,
     lifestyleCategories: [
@@ -127,7 +130,7 @@ const demoData = {
 };
 
 // Placeholder for real data encrypted. Default is encrypted via 'test' password
-const encryptedBlob = "U2FsdGVkX1/MBQLtGgWY+RUk9kTEZSy7rwD9Th063G9AeDDYGLJ3xYuph/CD1LS73/Zfa6/+JgyiFTF47Y9n6uxc42QqjQ714AMEJztTSmDfNwh8YjbalvzyrwKO2kL68+2OD4XrkgBNUzbmmAMWmrIoK/9Rir4lWuZ8aBc3WnTZD1qyGciTIXAgpVcOhiHAsAljcHUOY1TG4j23+X0zdxH807yvUN6kvP0LgGb6f76kijq/tMkvEtD/Hrr4HKx/YttMWH+WWEg7aloUBkpMowe9NvrA8i44folErvgTKjaX0jJZ6EIRQAm93/ms+lLM1YPpLIVJS9c87JUiTv2lIvq6aJ58jzx3ogDpnM5eGpfNkjwlPGo0UvhGKMWXzUkwpur6ellvkq5rgesDux11qqvlXMMyELPfUnbxWOFUPuyyCA9esVdZ8ZDtGz67jRzGeZxsxmw5si8rEWHEBO4Po8nC5rfkvLYV/efnqTKHTMWbw+1aD8EjYoC3CogpUgdfpfk1EFzjrs/O4RbEUWqJJXgdL/7mqYTS2NSOS6aEeBpasWePsUaxvV3GDTAEgADRi0wjafHgvDr/Wx4l3eSzUwAWkfLYPAJt05VJY60eY9tJrsjcJ8dwk3Ov7J/MqufMqsqDF/ibWDokxQCEJBSQy9UjqZyQCyM02wtQi2Yk7FjydXRbihVnp1qvjTfoYqg7VX+1m+Dt/Q6G82VZGbfJuS5vzOz8aJjp1xOWOG22idgnc+GjmFZgDqqBXlgNiKuxTdr3uL0wtB/2cDNkkxpF10kUY9NmdWcBLsTbH53WJ04jg3O8ULOUJYI/0Y6fl0bLg6KfHjKP+Kw8sVZyG6jb69XRqxdvIrGY1M85GFdsbBvNzqzuEAvhhrTsiGYRITrC/IN2vM6nxTCt7bgYJSUekdaHI16R/EmCBju6QisYqdsfDqljnvlbPxSloTUIRGbKHK+BvWa4fgQJIxFp6DjsuPIVM2iPX25VIU1SeqCAxK/Xi+PQD1lmRUpUxyZYS361lIT56tyH+QtdJ1nfVgM8ZCc8u4txKBySMUEKV/UXOhkdr8aOe/U3Ry5a3nN1icNN";
+const encryptedBlob = "U2FsdGVkX1+kBgNgpezi7w5etLefVHTjhL1tEov+XAWXTyCHY+1T8HZu5QH0nkQxNFot7Dyq4/xwViMcLDi9r3+Os/21KodeGRB7BfB9MqGbHqZ17neYpGZc/xwXLMY5hF7uUE4oJhdHd+QdRg5GX8ZvwtvFDLe8Owjx2zHOYHF6LfZJgX8fU2E66PWrKCLIWQVdkprTR9Il/FWLjaPkHV7UTFcpSuYfiA3YpTNvIpknwzl4kzDvT26Fs3MfvOUZneo20K854auOaf3BdXB5xFpQd/o0peNtKdtiyGu99BwEvwWfKS9+X+4Q+dM8hZYrluVYW/xXMUsx3I/Eeg/F8XPilPVi75mK1qY0KosnnCMAZQ3qEyYKFAgTxSCA5iQM1/Cwh1ysGBt/i/ya2RffVVGfjG6w9GdoUgUHwemm26mvDHdnR6yDfAHRKkher/oilRoj136odSdbCztkbNTm1y0ZAv1Ud0YR1XNTjNx5iXxrEVQwH7gnbLuOHGokU+NX1zemGelJ7QLGoyBu3rQqgpsf78sucU214UT4x7xAjyI8+VDGn+TxylVGjWZY2gOpoJBc34WgcN9GqO/dmb+9R8XZfx54ayat2B0rLLalgHk5HXIe6IsBYV5r8E5soiuMS46A8uLXjH/YE7oWO4vogOiBLpWYh7tau3J22aq1bkLCIHXMXZK2kdLzdF2bXjyy6SL0I0U2srxghXmodjshxteQbUtB47jciLa/+Hvy+CEDTxbU7LWGlaTxcsExVgMi2EE9tc9z7B9pyqxzSsrEE3rl3VDKBsuAzi7o3e38+qdP/dUCPC46oqAajksrCfwVmTd+qwy4gNDJquMPAK1ZeBLcu+lBeUkmYrsNY5OnM5yQdgDVtJZ6VAU06DdOIy0j46cU+4EdkIHp9jM+rb5pR3UJmf19WRjA3yhG+xG5Q4LfSaSmDFK+wjjY8oNxYely5rdAeKoVAI2l25r664fblMr7KRjsRDH+J7xRFhbp7XJ9V9uCb9PgTIlwp2Qes9InsQUmfIa7+nlR/AZ5+e11Aqbely1FBYLhwxA4H7Poo+y3Bdw03K0qJPOHRFwBDCAzckCjgKVKzJSHdqbhr8+feKkpdhxk5YiB1b0inyzVWbcp03Q8q0X4ZkLTETvyOHus9PNndT4itPWRp2y1j3kAZRS1AX0GdRapdWikTW4bPtM=";
 
 const formatGBP = (value) =>
     new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(value);
@@ -157,7 +160,7 @@ const CalculatedField = ({ label, value, icon, colorVar, isMonthly }) => {
     );
 };
 
-const ToggleField = ({ label, value, isActive, onToggle, icon, colorVar, isMonthly, hint }) => {
+const ToggleField = ({ label, value, isActive, onToggle, icon, colorVar, isMonthly, hint, hideNumberInput, toggleLabels }) => {
     const Icon = icon;
     const displayValue = isMonthly ? Math.round(value / 12) : value;
     return (
@@ -165,17 +168,21 @@ const ToggleField = ({ label, value, isActive, onToggle, icon, colorVar, isMonth
             <div className="sankey-field-header">
                 <label className="sankey-field-label">
                     <Icon size={14} style={{ color: colorVar }} /> {label}
-                    <span className="sankey-badge-auto">Auto</span>
+                    {!hideNumberInput && <span className="sankey-badge-auto">Auto</span>}
                 </label>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <label className="sankey-switch">
+                    {toggleLabels && <span style={{ fontSize: '0.75rem', color: isActive ? 'var(--grey-text)' : 'var(--white)', transition: 'color 0.2s', userSelect: 'none' }}>{toggleLabels[0]}</span>}
+                    <label className={`sankey-switch ${toggleLabels ? 'neutral' : ''}`}>
                         <input type="checkbox" checked={isActive} onChange={onToggle} />
                         <span className="sankey-slider"></span>
                     </label>
-                    <div className="sankey-calc-input" style={{ opacity: isActive ? 1 : 0.4 }}>
-                        <span className="currency-symbol">£</span>
-                        <input type="number" readOnly value={isActive ? displayValue : 0} className="hide-arrows" />
-                    </div>
+                    {toggleLabels && <span style={{ fontSize: '0.75rem', color: isActive ? 'var(--white)' : 'var(--grey-text)', transition: 'color 0.2s', userSelect: 'none' }}>{toggleLabels[1]}</span>}
+                    {!hideNumberInput && (
+                        <div className="sankey-calc-input" style={{ opacity: isActive ? 1 : 0.4 }}>
+                            <span className="currency-symbol">£</span>
+                            <input type="number" readOnly value={isActive ? displayValue : 0} className="hide-arrows" />
+                        </div>
+                    )}
                 </div>
             </div>
             {hint && <p className="sankey-field-hint">{hint}</p>}
@@ -183,22 +190,24 @@ const ToggleField = ({ label, value, isActive, onToggle, icon, colorVar, isMonth
     );
 };
 
-const InputField = ({ label, field, icon, colorVar, data, isMonthly, updateField, hint }) => {
+const InputField = ({ label, field, icon, colorVar, data, isMonthly, updateField, hint, noScale, stepOverride, formatOptions }) => {
     const Icon = icon;
-    const displayValue = isMonthly ? Math.round(data[field] / 12) : data[field];
-    const smallStep = isMonthly ? 10 : 100;
-    const largeStep = isMonthly ? 50 : 500;
+    const isScaled = isMonthly && !noScale;
+    const displayValue = isScaled ? Math.round(data[field] / 12) : Number(data[field]);
+    const smallStep = stepOverride ? stepOverride.small : (isScaled ? 10 : 100);
+    const largeStep = stepOverride ? stepOverride.large : (isScaled ? 50 : 500);
 
     const handleInputChange = (e) => {
-        let val = parseInt(e.target.value, 10);
+        let val = parseFloat(e.target.value);
         if (isNaN(val)) val = 0;
-        updateField(field, isMonthly ? val * 12 : val);
+        updateField(field, isScaled ? val * 12 : val);
     };
 
     const adjustValue = (amount) => {
-        const current = displayValue || 0;
-        const newVal = Math.max(0, current + amount);
-        updateField(field, isMonthly ? newVal * 12 : newVal);
+        let current = displayValue || 0;
+        let newVal = Math.max(0, current + amount);
+        newVal = Math.round(newVal * 100) / 100;
+        updateField(field, isScaled ? newVal * 12 : newVal);
     };
 
     return (
@@ -212,10 +221,11 @@ const InputField = ({ label, field, icon, colorVar, data, isMonthly, updateField
                     <button onClick={() => adjustValue(-smallStep)} className="sankey-stepper-btn" title="Decrease"><Minus size={14} strokeWidth={1.5} /></button>
 
                     <div className="sankey-stepper-input">
-                        <span className="currency-symbol">£</span>
+                        {formatOptions?.symbol ? <span className="currency-symbol">{formatOptions.symbol}</span> : <span className="currency-symbol">£</span>}
                         <input
                             type="number"
-                            value={displayValue || ''}
+                            step={stepOverride ? stepOverride.small : "1"}
+                            value={displayValue === 0 ? 0 : displayValue || ''}
                             onChange={handleInputChange}
                             className="hide-arrows"
                         />
@@ -476,8 +486,9 @@ export default function SankeyApp() {
     const sankeyData = useMemo(() => {
         const {
             grossIncome: gA, bonus: bnsA,
-            parentalLoan: plA, serviceCharge: scA, bills: bA, nestPension: npA, isa: isaA,
-            lifestyleCategories, studentLoanActive
+            propertyLoanPayment: plA,
+            serviceCharge: scA, bills: bA, nestPension: npA, isa: isaA,
+            lifestyleCategories, studentLoanActive, pensionReliefAtSource
         } = data;
 
         const iA = calculateUKIncomeTax(gA);
@@ -490,10 +501,10 @@ export default function SankeyApp() {
         const incomeTax = Math.round(iA * m);
         const ni = Math.round(nA * m);
         const studentLoan = Math.round(sAAnnual * m);
-        const parentalLoan = Math.round(plA * m);
+        const propertyLoan = Math.round(plA * m);
         const serviceCharge = Math.round(scA * m);
         const bills = Math.round(bA * m);
-        const totalApt = parentalLoan + serviceCharge + bills;
+        const totalApt = propertyLoan + serviceCharge + bills;
 
         const scaledLifestyleCategories = lifestyleCategories.map(cat => ({
             ...cat, value: Math.round(cat.value * m)
@@ -507,8 +518,11 @@ export default function SankeyApp() {
         const isa = Math.round(isaA * m);
         const isaTotal = isa + bonus;
 
-        const totalLevel1 = incomeTax + ni + studentLoan;
-        const totalLevel2 = totalApt + totalLifestyle + nestPension + isa;
+        const level1Pension = pensionReliefAtSource ? 0 : nestPension;
+        const level2Pension = pensionReliefAtSource ? nestPension : 0;
+
+        const totalLevel1 = incomeTax + ni + studentLoan + level1Pension;
+        const totalLevel2 = totalApt + totalLifestyle + level2Pension + isa;
         const availableCashTheoretical = grossIncome - totalLevel1;
         const unallocated = availableCashTheoretical - totalLevel2;
         const deficit = unallocated < 0 ? Math.abs(unallocated) : 0;
@@ -527,13 +541,14 @@ export default function SankeyApp() {
             { id: 'tax', label: 'Income Tax', value: incomeTax, color: colorsMap.rose, col: 1 },
             { id: 'ni', label: 'Nat. Insurance', value: ni, color: colorsMap.orange, col: 1 },
             { id: 'sl', label: 'Student Loan', value: studentLoan, color: colorsMap.amber, col: 1 },
+            ...(!pensionReliefAtSource ? [{ id: 'nest', label: 'Workplace Pension', value: nestPension, color: colorsMap.teal, col: 1 }] : []),
             { id: 'available', label: 'Available Cash', value: availableCashActual, color: colorsMap.blue, col: 1 },
             { id: 'apt', label: 'APT', value: totalApt, color: colorsMap.violet, col: 2 },
             { id: 'lifestyleGroup', label: 'Lifestyle & Savings', value: totalLifestyle, color: colorsMap.primary, col: 2 },
-            { id: 'nest', label: 'Workplace Pension', value: nestPension, color: colorsMap.teal, col: 2 },
+            ...(pensionReliefAtSource ? [{ id: 'nest', label: 'Workplace Pension', value: nestPension, color: colorsMap.teal, col: 2 }] : []),
             { id: 'isa', label: 'ISA Investment', value: isaTotal, color: colorsMap.yellow, col: 2 },
             ...(surplus > 0 ? [{ id: 'surplus', label: 'Unallocated Buffer', value: surplus, color: colorsMap.text, col: 2 }] : []),
-            { id: 'parental', label: 'Property Loan', value: parentalLoan, color: colorsMap.indigo, col: 3 },
+            { id: 'parental', label: 'Property Loan', value: propertyLoan, color: colorsMap.indigo, col: 3 },
             { id: 'serviceCharge', label: 'Service Charge', value: serviceCharge, color: colorsMap.sky, col: 3 },
             { id: 'bills', label: 'Bills', value: bills, color: colorsMap.blue, col: 3 }
         ];
@@ -614,13 +629,14 @@ export default function SankeyApp() {
         addLink('gross', 'tax', incomeTax);
         addLink('gross', 'ni', ni);
         addLink('gross', 'sl', studentLoan);
+        if (!pensionReliefAtSource) addLink('gross', 'nest', nestPension);
 
         const grossToAvailable = grossIncome - totalLevel1;
         if (grossToAvailable > 0) addLink('gross', 'available', grossToAvailable);
         if (deficit > 0) addLink('deficit', 'available', deficit);
 
         addLink('available', 'apt', totalApt);
-        addLink('apt', 'parental', parentalLoan);
+        addLink('apt', 'parental', propertyLoan);
         addLink('apt', 'serviceCharge', serviceCharge);
         addLink('apt', 'bills', bills);
 
@@ -641,7 +657,7 @@ export default function SankeyApp() {
             });
         });
 
-        addLink('available', 'nest', nestPension);
+        if (pensionReliefAtSource) addLink('available', 'nest', nestPension);
         addLink('available', 'isa', isa);
         if (bonus > 0) addLink('bonus', 'isa', bonus);
         if (surplus > 0) addLink('available', 'surplus', surplus);
@@ -711,14 +727,15 @@ export default function SankeyApp() {
 
     // Widget Calculations
     const mDisplay = isMonthly ? 1 / 12 : 1;
-    const loanTotalDisplay = Math.round(data.parentalLoan * mDisplay);
-    const loanInterestDisplay = Math.round(6270 * mDisplay);
+    const loanTotalDisplay = Math.round(data.propertyLoanPayment * mDisplay);
+    const loanInterestDisplay = Math.round(data.propertyLoanValue * (data.propertyLoanRate / 100) * mDisplay);
     const loanPrincipalDisplay = Math.max(0, loanTotalDisplay - loanInterestDisplay);
     const loanInterestPercent = loanTotalDisplay > 0 ? Math.min(100, (loanInterestDisplay / loanTotalDisplay) * 100) : 0;
     const loanPrincipalPercent = 100 - loanInterestPercent;
 
     return (
         <div className="sankey-page">
+
 
             {/* Sidebar Controls */}
             <div className="sankey-sidebar sankey-scrollbar">
@@ -822,7 +839,12 @@ export default function SankeyApp() {
                         <h2 className="sankey-section-title">
                             <Home size={14} /> Fixed Core Expenses
                         </h2>
-                        <InputField label="Property Loan" field="parentalLoan" icon={Home} colorVar="var(--white)" data={data} isMonthly={isMonthly} updateField={updateField} />
+                        <div style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.05)', borderRadius: '12px', padding: '12px', marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--grey-text)', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Loan Terms</span>
+                            <InputField label="Property Value" field="propertyLoanValue" icon={Home} colorVar="var(--white)" data={data} isMonthly={isMonthly} updateField={updateField} noScale={true} stepOverride={{ small: 5000, large: 25000 }} />
+                            <InputField label="Interest Rate" field="propertyLoanRate" icon={Home} colorVar="var(--white)" data={data} isMonthly={isMonthly} updateField={updateField} noScale={true} stepOverride={{ small: 0.1, large: 0.5 }} formatOptions={{ symbol: '%' }} />
+                        </div>
+                        <InputField label="Property Loan Payment" field="propertyLoanPayment" icon={Home} colorVar="var(--white)" data={data} isMonthly={isMonthly} updateField={updateField} />
                         <InputField label="Service Charge" field="serviceCharge" icon={Home} colorVar={COLORS_MAP.sky} data={data} isMonthly={isMonthly} updateField={updateField} />
                         <InputField label="Bills" field="bills" icon={Zap} colorVar="var(--cyan-dark)" data={data} isMonthly={isMonthly} updateField={updateField} />
                     </section>
@@ -888,6 +910,17 @@ export default function SankeyApp() {
                         </div>
 
                         <InputField label="Workplace Pension" field="nestPension" icon={PiggyBank} colorVar={COLORS_MAP.teal} data={data} isMonthly={isMonthly} updateField={updateField} />
+                        <ToggleField
+                            label="Tax Treatment"
+                            value={0}
+                            isActive={data.pensionReliefAtSource}
+                            onToggle={() => updateField('pensionReliefAtSource', !data.pensionReliefAtSource)}
+                            icon={PiggyBank}
+                            colorVar={COLORS_MAP.teal}
+                            isMonthly={isMonthly}
+                            hideNumberInput={true}
+                            toggleLabels={['Net Pay', 'Relief At Source']}
+                        />
                         <InputField label="ISA Investment" field="isa" icon={PiggyBank} colorVar="var(--yellow-primary)" data={data} isMonthly={isMonthly} updateField={updateField} />
                     </section>
                 </div>
@@ -916,7 +949,7 @@ export default function SankeyApp() {
                         <div className="sankey-widget">
                             <div className="sankey-widget-header">
                                 <span className="sankey-widget-title"><Home size={14} style={{ color: 'var(--white)' }} /> Property Loan</span>
-                                <span style={{ color: 'var(--grey-text)', fontSize: '0.625rem' }}>£570k @ 1.1%</span>
+                                <span style={{ color: 'var(--grey-text)', fontSize: '0.625rem' }}>£{(data.propertyLoanValue / 1000).toFixed(0)}k @ {data.propertyLoanRate}%</span>
                             </div>
 
                             <div className="sankey-progress-bar">

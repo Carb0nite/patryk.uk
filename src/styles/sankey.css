@@ -818,6 +818,10 @@ input:checked+.sankey-slider {
   background-color: var(--cyan-dark);
 }
 
+.sankey-switch.neutral input:checked+.sankey-slider {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 input:checked+.sankey-slider:before {
   transform: translateX(16px);
 }
